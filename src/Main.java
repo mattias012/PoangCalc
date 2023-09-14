@@ -7,18 +7,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-
         ArrayList<Integer> scoreboard = new ArrayList<>();
 
         String input = "";
         int insertThisPoint = 0;
         Boolean continueProgram = true;
 
-        //test
         while (continueProgram){
 
-            System.out.println("Skriv in poängen: ");
+            if(input.equals("")) {
+                System.out.println("Skriv in poängen: ");
+            }
             input = scanner.nextLine();
 
             //while-loop?
@@ -32,11 +31,9 @@ public class Main {
             insertPoints(insertThisPoint, scoreboard);
 
             //Run exit loop function
-            System.out.println("Skriv ett nytt tal om du vill lägga tll eller. Vill du avsluta? skriv j");
+            System.out.println("Vill du avsluta? j/n");
             continueProgram = exit();
-
         }
-
     }
 
     static boolean inputScore (String input){
@@ -86,16 +83,17 @@ public class Main {
     }
     static boolean exit(){
 
-        Boolean continueProgramInThisFunction = true;
+        Boolean continueProgramInThisFunction;
         String choice = scanner.nextLine();
 
-        if (choice.equals("n")){
+        if (choice.equals("j")){
             continueProgramInThisFunction = false;
         }
         else {
 
-            checkIfnumber(choice);
             continueProgramInThisFunction = true;
+            System.out.println("Skriv in nästa poäng:");
+            //String input = scanner.nextLine();
         }
 
         return continueProgramInThisFunction;
