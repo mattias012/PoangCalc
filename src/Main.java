@@ -7,28 +7,19 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Create our arraylist to store scores
         ArrayList<Integer> scoreboard = new ArrayList<>();
 
+        //Create variables etc.
         String input = "";
         int insertThisPoint = 0;
         Boolean continueProgram = true;
 
+        //Input data and store it.
         while (continueProgram){
 
-            if(input.equals("")) {
-                System.out.println("Skriv in poängen: ");
-            }
-            input = scanner.nextLine();
-
-            //while-loop?
-            while (!inputScore(input)){
-                System.out.println("Du måste skriva in ett giltigt tal, prova igen:");
-                input = scanner.nextLine();
-            }
-
-            //Insert points to arraylist
-            insertThisPoint = Integer.parseInt(input);
-            insertPoints(insertThisPoint, scoreboard);
+            //Menu choice 1
+            storePoints(input, insertThisPoint, scoreboard);
 
             //Run exit loop function
             System.out.println("Vill du avsluta? j/n");
@@ -55,14 +46,31 @@ public class Main {
         for(int point : scoreboard){
             System.out.println(point);
         }
+        System.out.println("-----------------");
 
     }
-    static void storePoints(){
+    static void storePoints(String input, int insertThisPoint, ArrayList<Integer> scoreboard){
+
+        if(input.equals("")) {
+            System.out.println("Skriv in poängen: ");
+        }
+        input = scanner.nextLine();
+
+        //Check if entered score is a digit or not
+        while (!inputScore(input)){
+            System.out.println("Du måste skriva in ett giltigt tal, prova igen:");
+            input = scanner.nextLine();
+        }
+
+        //Insert points to arraylist
+        insertThisPoint = Integer.parseInt(input);
+        insertPoints(insertThisPoint, scoreboard);
+
 
     }
-    static int calcHighestPoint(){
+    static void calcHighestPoint(){
 
-        return 0;
+
     }
     static int calcAveragePoint(){
 
