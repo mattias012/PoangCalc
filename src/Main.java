@@ -15,6 +15,7 @@ public class Main {
         int insertThisPoint = 0;
         Boolean continueProgram = true;
 
+        //test
         while (continueProgram){
 
             System.out.println("Skriv in poängen: ");
