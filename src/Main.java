@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -30,18 +29,21 @@ public class Main {
             }
             //menu choice 2
             else if (menuChoice == 2) {
+
                 double result = calcAveragePoint(scoreboard);
                 System.out.println(result);
-
                 menuChoice = menu();
+
             } else if (menuChoice == 3) {
-                calcHighestPoint();
-
+                //Call highest function
+                calcHighestPoint(scoreboard);
                 menuChoice = menu();
-            } else if (menuChoice == 4) {
+
+            } else if (menuChoice == EXIT_PROGRAM) {
                 continueProgram = false;
             } else {
-
+                continueProgram = true;
+                menuChoice = menu();
             }
         }
         System.out.println("Programmet avslutas!");
@@ -49,7 +51,7 @@ public class Main {
 
     static int menu() {
 
-        //default is 0, run again.
+        //set menuChoice;
         int menuChoice = 0;
 
         System.out.println();
@@ -66,8 +68,6 @@ public class Main {
 
             if (menuChoice == 1 || menuChoice == 2 || menuChoice == 3) {
                 menuChoice = Integer.parseInt(choice);
-            } else {
-                menuChoice = EXIT_PROGRAM;
             }
         }
         return menuChoice;
@@ -82,20 +82,18 @@ public class Main {
             return false;
         }
     }
-
     static void insertPoints(int points, ArrayList<Integer> scoreboard) {
 
-        //add score
+        //add score to scoreboard
         scoreboard.add(points);
 
+        //Print scoreboard
         System.out.println("-- Scoreboard --");
         for (int point : scoreboard) {
             System.out.println(point);
         }
-        System.out.println("-----------------");
-
+        System.out.println("----------------");
     }
-
     static void storePoints(String input, int insertThisPoint, ArrayList<Integer> scoreboard) {
 
         if (input.equals("")) {
@@ -112,14 +110,23 @@ public class Main {
         //Insert points to arraylist
         insertThisPoint = Integer.parseInt(input);
         insertPoints(insertThisPoint, scoreboard);
-
     }
+    static void calcHighestPoint(ArrayList<Integer> scoreboard) {
 
-    static void calcHighestPoint() {
+        //Sort arraylist from highest to lowest
+        Collections.sort(scoreboard, Collections.reverseOrder());
 
-
+        //Print scoreboard with highlighted number 1
+        System.out.println("-- Scoreboard --");
+        for (int i = 0; i < scoreboard.size(); i++) {
+            if (i == 0) {
+                System.out.println("*** " + scoreboard.get(0) + " ***");
+            } else {
+                System.out.println(scoreboard.get(i));
+            }
+        }
+        System.out.println("----------------");
     }
-
     static double calcAveragePoint(ArrayList<Integer> scoreboard) {
 
         double sum = 0;
@@ -130,13 +137,9 @@ public class Main {
             sum = sum + points;
         }
 
-        average = (sum/numerOfParticipants);
+        average = (sum / numerOfParticipants);
 
         return average;
-    }
-
-    static void showResult() {
-
     }
 
     static boolean checkIfnumber(String input) {
