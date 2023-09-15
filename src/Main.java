@@ -33,7 +33,7 @@ public class Main {
 
             //Menu choice 3
             } else if (menuChoice == 3) {
-                
+
                 //Call highest function
                 calcHighestPoint(scoreboard);
                 menuChoice = menu();
@@ -116,28 +116,28 @@ public class Main {
         Collections.sort(scoreboard, Collections.reverseOrder());
 
         //Print scoreboard with highlighted number 1
-        System.out.println("-- Scoreboard --");
+        System.out.println("--- Scoreboard ---");
         for (int i = 0; i < scoreboard.size(); i++) {
             if (i == 0) {
-                System.out.println("*** " + scoreboard.get(0) + " ***");
+                System.out.println("1.  *** " + scoreboard.get(0) + " ***");
             } else {
-                System.out.println(scoreboard.get(i));
+                System.out.println(i+1 + ".  "+ scoreboard.get(i));
             }
         }
-        System.out.println("----------------");
+        System.out.println("------------------");
     }
     static double calcAveragePoint(ArrayList<Integer> scoreboard) {
 
         double sum = 0;
         double average = 0;
-        double numerOfParticipants = scoreboard.size();
+        double numbrOfParticipants = scoreboard.size();
 
         for (int points : scoreboard) {
             sum = sum + points;
         }
 
         //Calculate average
-        average = (sum / numerOfParticipants);
+        average = (sum / numbrOfParticipants);
 
         return average;
     }
