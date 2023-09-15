@@ -1,1 +1,1 @@
-This is my short "andd points to a scoreboard and sort it" excercise.
+This is my short "add points to a scoreboard and sort it" excercise done in Java using ArrayList and a few own methods.
