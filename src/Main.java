@@ -30,7 +30,8 @@ public class Main {
             }
             //menu choice 2
             else if (menuChoice == 2) {
-                calcAveragePoint(scoreboard);
+                double result = calcAveragePoint(scoreboard);
+                System.out.println(result);
 
                 menuChoice = menu();
             } else if (menuChoice == 3) {
@@ -41,10 +42,6 @@ public class Main {
                 continueProgram = false;
             } else {
 
-                //Run exit loop function
-                //Detta kommer aldrig inträffa?
-                System.out.println("Vill du avsluta? j/n");
-                continueProgram = exit();
             }
         }
         System.out.println("Programmet avslutas!");
@@ -123,15 +120,19 @@ public class Main {
 
     }
 
-    static int calcAveragePoint(ArrayList<Integer> scoreboard) {
+    static double calcAveragePoint(ArrayList<Integer> scoreboard) {
 
-        int sum = 0;
+        double sum = 0;
+        double average = 0;
+        double numerOfParticipants = scoreboard.size();
 
         for (int points : scoreboard) {
             sum = sum + points;
         }
 
-        return sum;
+        average = (sum/numerOfParticipants);
+
+        return average;
     }
 
     static void showResult() {
@@ -146,22 +147,5 @@ public class Main {
         } else {
             return true;
         }
-    }
-
-    static boolean exit() {
-
-        Boolean continueProgramInThisFunction;
-        String choice = scanner.nextLine();
-
-        if (choice.equals("j")) {
-            continueProgramInThisFunction = false;
-        } else {
-
-            continueProgramInThisFunction = true;
-            //System.out.println("Skriv in nästa poäng:");
-            //String input = scanner.nextLine();
-        }
-
-        return continueProgramInThisFunction;
     }
 }
