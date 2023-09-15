@@ -30,8 +30,10 @@ public class Main {
                 double result = calcAveragePoint(scoreboard);
                 System.out.println(result);
                 menuChoice = menu();
+
             //Menu choice 3
             } else if (menuChoice == 3) {
+                
                 //Call highest function
                 calcHighestPoint(scoreboard);
                 menuChoice = menu();
