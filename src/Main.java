@@ -1,10 +1,8 @@
 import java.util.*;
 
 public class Main {
-
     private static final int EXIT_PROGRAM = 4;
     static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
 
         //Create our arraylist to store scores
@@ -24,7 +22,6 @@ public class Main {
             //Menu choice 1
             if (menuChoice == 1) {
                 storePoints(input, insertThisPoint, scoreboard);
-
                 menuChoice = menu();
             }
             //menu choice 2
@@ -33,7 +30,7 @@ public class Main {
                 double result = calcAveragePoint(scoreboard);
                 System.out.println(result);
                 menuChoice = menu();
-
+            //Menu choice 3
             } else if (menuChoice == 3) {
                 //Call highest function
                 calcHighestPoint(scoreboard);
@@ -137,6 +134,7 @@ public class Main {
             sum = sum + points;
         }
 
+        //Calculate average
         average = (sum / numerOfParticipants);
 
         return average;
